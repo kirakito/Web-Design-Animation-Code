@@ -1,0 +1,58 @@
+.container .elementor-widget{
+    width: 400px;
+    opacity: 1;
+    transition: all 0.5s linear;
+}
+
+.container {
+    width: 20%;
+    transition: width 1.5s ease;
+}
+
+/* Hover effect */
+.container:hover {
+    width: 100%;
+}
+
+
+.img-box-1 .elementor-image-box-description{
+    transition: all 0.5s ease;
+     opacity: 0;
+}
+
+.img-box-1 .elementor-image-box-title{
+    transition: all 0.5s ease;
+     opacity: 0;
+}
+
+.container:hover .elementor-image-box-description{
+ opacity: 1;
+
+}
+
+.container:hover .elementor-image-box-title{
+ opacity: 1;
+
+}
+
+.container .img-box-1{
+    overflow: hidden;
+    transition: all 1.5s ease;
+    max-height: 50px
+}
+
+.container:hover .img-box-1{
+     height: auto;
+     max-height: 250px;
+}
+
+@media (max-width:767px){
+.container{
+    width: 100vh;
+    height:60vh;
+    transition: height 1.5s ease;
+}
+.container:hover{
+    width: 100vh;
+    height:100vh;
+}
