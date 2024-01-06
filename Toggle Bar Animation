@@ -1,0 +1,281 @@
+<div class="main-container1">
+    <div class="toggle-container">
+        <input type="checkbox" id="fast" class="toggle" />
+        <label for="fast" class="label hover-text">
+            <div class="ball"></div>
+            <span class="tooltip-text" id="top">I specialize in developing websites during my free time, focusing on speed and efficiency will require additional resources and dramatically increase need in time management.</span>
+        </label>
+        <span class="text" id="id-text">Fast</span>
+    </div>
+
+    <div class="toggle-container">
+        <input type="checkbox" id="big" class="toggle" />
+        <label for="big" class="label hover-text">
+            <div class="ball"></div>
+            <span class="tooltip-text" id="top">How large is your website projected to be, in terms of pages (ranging from 5 to 20), and diverse in the content and design?</span>
+        </label>
+        <span class="text" id="id-text">Big</span>
+    </div>
+
+    <div class="toggle-container">
+        <input type="checkbox" id="complex" class="toggle" />
+        <label for="complex" class="label hover-text">
+            <div class="ball"></div>
+            <span class="tooltip-text" id="top">The designs envisioned for this project are complex, incorporating numerous advanced features that will require sophisticated coding and intricate structural elements.</span>
+        </label>
+        <span class="text" id="id-text">Complex</span>
+    </div>
+
+    <div class="toggle-container">
+        <input type="checkbox" id="custom" class="toggle" />
+        <label for="custom" class="label hover-text">
+            <div class="ball"></div>
+            <span class="tooltip-text" id="top">The project will feature custom, yet unrefined content, including images, text, videos, and various design elements. This approach necessitates the integration of third-party applications and the application of specialized skills.</span>
+        </label>
+        <span class="text" id="id-text">Custom</span>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<div class="progress-container">
+    <div class="progress">
+        <div class="progress-segment" id="segment-fast" style="width:0%;"></div>
+        <div class="progress-segment" id="segment-big" style="width:0%;"></div>
+        <div class="progress-segment" id="segment-complex" style="width:0%;"></div>
+        <div class="progress-segment" id="segment-custom" style="width:0%;"></div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggles = document.querySelectorAll('.toggle');
+
+    toggles.forEach(toggle => {
+        toggle.addEventListener('change', updateProgressSegments);
+    });
+
+    function updateProgressSegments() {
+        // Reset all segments to 0%
+        resetProgressSegments();
+
+        // Check each toggle and set the width accordingly
+        if(document.getElementById('fast').checked) {
+            setSegmentWidth('segment-fast', 40);
+        }
+        if(document.getElementById('big').checked) {
+            setSegmentWidth('segment-big', 25);
+        }
+        if(document.getElementById('complex').checked) {
+            setSegmentWidth('segment-complex', 20);
+        }
+        if(document.getElementById('custom').checked) {
+            setSegmentWidth('segment-custom', 15);
+        }
+    }
+
+    function resetProgressSegments() {
+        document.getElementById('segment-fast').style.width = '0%';
+        document.getElementById('segment-big').style.width = '0%';
+        document.getElementById('segment-complex').style.width = '0%';
+        document.getElementById('segment-custom').style.width = '0%';
+    }
+
+    function setSegmentWidth(segmentId, width) {
+        document.getElementById(segmentId).style.width = `${width}%`;
+    }
+});
+
+
+</script>
+
+
+
+
+/* CSS CODE */
+
+.tooltip-text {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  width: 200px;
+  color: white;
+  font-size: 14px;
+  background-color: #192733;
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
+}
+
+.hover-text:hover .tooltip-text {
+  visibility: visible;
+}
+
+.tooltip-text::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+#top {
+  width: 300px;
+  bottom: 120%;
+  left: 50%;
+  margin-left: -150px;
+}
+
+.progress {
+  margin-top:40px;
+}
+
+.progress-segment {
+    height: 100%;
+    float: left;
+    transition: width 1s;
+    position: relative;
+    overflow: hidden;
+}
+
+#segment-fast { background-color: purple; }
+#segment-big { background-color: #061c6f; }
+#segment-complex { background-color: #fd9000; }
+#segment-custom { background-color: #b62e04; }
+
+
+.main-container1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.toggle-container {
+    display: grid;
+    width:15%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.toggle {
+  visibility: hidden;
+  }
+  
+
+.label {
+  position: relative;
+  background-color: lightgray;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+
+}
+
+#fast:checked + .label {
+  background-color: purple;
+}
+
+#big:checked + .label {
+  background-color: #061c6f;
+}
+
+#complex:checked + .label {
+  background-color: #fd9000;
+}
+
+#custom:checked + .label {
+  background-color: #b62e04;
+}
+
+
+
+.ball {
+  background: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  align-items: center;
+  justify-content: center;
+  animation: slideOff 0.3s linear forwards;
+}
+
+.toggle:checked + .label .ball {
+  animation: slideOn 0.3s linear forwards;
+}
+
+@keyframes slideOn {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  50% {
+    transform: translateX(20px) scale(1.2);
+  }
+  100% {
+    transform: translateX(40px) scale(1);
+  }
+}
+
+@keyframes slideOff {
+  0% {
+    transform: translateX(40px) scale(1);
+  }
+  50% {
+    transform: translateX(20px) scale(1.2);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+
+@media (max-width: 767px) {
+.main-container1{
+    display:grid;
+
+
+}
+
+.toggle-container{
+    width:100%;
+}
+
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 881px) {
+    .toggle-container {
+    display: grid;
+    width:18%;
+}
+}
